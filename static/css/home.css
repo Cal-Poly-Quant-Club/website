@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "Helvetica Neue LT Pro 73";
+    src: url('fonts/Helvetica Neue LT Pro 73 Bold Extended.otf');
+}
+
+@font-face {
+    font-family: "Nimbus Mono L Regular";
+    src: url('fonts/Nimbus Mono L Regular.ttf');
+}
+
+.main-container {
+    width: 90%;
+    margin: auto;
+    font-family: "Helvetica Neue LT Pro 73";
+}
+
+#main-header {
+    font-size: 8rem;
+    font-weight: 900;
+    margin: auto;
+    text-align: center;
+    margin-top: 3%;
+}
+
+#major-bins {
+    /* align side by side */
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    font-family: "Nimbus Mono L Regular";
+}
+
+.major-bin {
+    /* Smaller version of main-header */
+    font-size: 4rem;
+    font-weight: 900;
+    margin: auto;
+    text-align: center;
+    margin-top: 3%;
+}
