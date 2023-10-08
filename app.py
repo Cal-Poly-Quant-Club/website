@@ -29,7 +29,7 @@ def home():
 def get_data():
     return render_template('./data_form.html')
 
-@app.route('/about')
+@app.route('/about', methods = ['GET'])
 def about():
     return render_template('./about.html')
 
