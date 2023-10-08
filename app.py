@@ -29,6 +29,10 @@ def home():
 def get_data():
     return render_template('./data_form.html')
 
+@app.route('/about')
+def about():
+    return render_template('./about.html')
+
 @app.route('/download', methods=['POST'])
 def submit():
     if request.method == 'POST':
@@ -42,7 +46,7 @@ def submit():
         if int(limit) > 10000:
             limit = 10000
 
-        base_url = "https://data.alpaca.markets/v2/stocks/auctions?symbols="
+        base_url = "https://data.alpaca.markets/v2/stocks/trades?symbols="
         end_url = "&limit=" + limit
 
         st_list = stock.split(",")
@@ -60,7 +64,7 @@ def submit():
             base_url = base_url + st + "%2C"
         base_url = base_url[0:-3]
 
-        """monday = datetime.datetime(2023, 7, 3)
+        monday = datetime.datetime(2023, 7, 3)
         days = {
             0: "Monday",
             1: "Tuesday",
@@ -100,8 +104,8 @@ def submit():
         start = yesterday.strftime("%Y-%m-%dT%H%%3A%M%%3A%SZ")
         end = today.strftime("%Y-%m-%dT%H%%3A%M%%3A%SZ")
         print(start)
-        print(end)"""
-        base_url = base_url + end_url
+        print(end)
+        base_url = base_url + "&start=" + start + "&end=" + end + end_url
         print(base_url)
 
         secret_key = os.environ.get("ALPACA_DATA_SECRET_KEY")
@@ -117,7 +121,7 @@ def submit():
 
         response = requests.get(base_url, headers=headers)
         content = response.text
-        #print(content)
+        print(content)
         csv_file_path = "./prices.csv"
 
         file = open(csv_file_path, mode="r+", newline="")
