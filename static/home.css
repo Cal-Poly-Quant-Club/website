@@ -42,5 +42,48 @@
 }
 
 h1 {
-    color: red;
+    font-family: Helvetica;
+    color: #0e5f27;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+#officers{
+    display: flex;
+}
+
+.flex-container img {
+    max-width: 200px; /* Set the maximum width of the image */
+    margin-right: 20px; /* Add spacing between the image and text */
+}
+
+
+
+.navbar ul {
+    list-style: none;
+    padding: 100;
+    display: inline-block; /* Make the list items horizontal */
+    text-align: center;
+}
+
+.navbar li {
+    margin-right: 20px; /* Adjust the margin to control spacing */
+    color: #0e5f27;
+    display: inline;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #0e5f27;
+}
+
+header{
+    text-align: center;
+    background-color: rgb(245, 217, 175);
 }

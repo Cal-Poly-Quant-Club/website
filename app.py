@@ -41,6 +41,18 @@ def contact():
 def projects():
     return render_template('./projects.html')
 
+@app.route('/cpquant')
+def cpquant():
+    return render_template('./cpquant.html')
+
+@app.route('/mts')
+def mts():
+    return render_template('./mts.html')
+
+@app.route('/startup-valuation')
+def startup_valuation():
+    return render_template('./startup-valuation.html')
+
 @app.route('/download', methods=['POST'])
 def submit():
     if request.method == 'POST':
@@ -95,7 +107,7 @@ def submit():
             today = today - datetime.timedelta(days=2)
             yesterday = today - datetime.timedelta(days=1)
 
-
+        """
         tf_value = 0
         if timeframe == "T":
             tf_value = input("How many minutes? (1-59)")
@@ -109,6 +121,7 @@ def submit():
             tf_value = 1
         tf_url += str(tf_value) + timeframe 
 
+        """
         start = yesterday.strftime("%Y-%m-%dT%H%%3A%M%%3A%SZ")
         end = today.strftime("%Y-%m-%dT%H%%3A%M%%3A%SZ")
         print(start)

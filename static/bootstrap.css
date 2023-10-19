@@ -235,6 +235,10 @@ h1, .h1 {
   }
 }
 
+li {
+  color: #0E5F27;
+}
+
 h2, .h2 {
   font-size: calc(1.325rem + 0.9vw);
   text-align: center;
@@ -293,6 +297,7 @@ address {
 ol,
 ul {
   padding-left: 2rem;
+  color: #0E5F27;
 }
 
 ol,
