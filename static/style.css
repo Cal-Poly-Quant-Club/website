@@ -8,6 +8,38 @@
     src: url('fonts/Nimbus Mono L Regular.ttf');
 }
 
+
+header{
+    text-align: center;
+    background-color: #e2d7bf;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header .navbar {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.navbar .title{
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+
+.navbar .navbar-links{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.navbar a{
+    color: rgb(25, 100, 0);
+    text-decoration: none;
+    transition: 0.2 ease;
+}
+  
 .main-container {
     width: 90%;
     margin: auto;
@@ -63,8 +95,6 @@ h1 {
     margin-right: 20px; /* Add spacing between the image and text */
 }
 
-
-
 .navbar ul {
     list-style: none;
     padding: 100;
@@ -76,14 +106,4 @@ h1 {
     margin-right: 20px; /* Adjust the margin to control spacing */
     color: #0e5f27;
     display: inline;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #0e5f27;
-}
-
-header{
-    text-align: center;
-    background-color: rgb(245, 217, 175);
 }
