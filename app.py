@@ -29,6 +29,14 @@ def home():
 def get_data():
     return render_template('./data_form.html')
 
+@app.route('/trades', methods = ['GET'])
+def trades():
+    return render_template('./trades.html')
+
+@app.route('/bars', methods = ['GET'])
+def bars():
+    return render_template('./bars.html')
+
 @app.route('/about', methods = ['GET'])
 def about():
     return render_template('./about.html')

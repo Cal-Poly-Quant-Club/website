@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Entry Form</title>
+</head>
+
+<body>
+    <form action="/download" method="POST">
+        <label for="stock">Which stocks are you looking for?:</label>
+        <input type="text" id="username" name="username" placeholder="Which stocks are you looking for?" required>
+        
+        <br>
+
+        <label for="password">When do you want to start?:</label>
+        <input type="text" id="password" name="password" placeholder="When do you want to start?:" required>
+
+        <br>
+
+        <label for="limit">How many trades do you want? (No more that 10,000)</label>
+        <input type="text" id="limit" name="limit" placeholder="How many trades do you want?" required>
+
+        <br>
+
+        <input type="submit" value="Download">
+    </form>
+</body>
+</html>

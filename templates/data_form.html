@@ -7,23 +7,10 @@
 </head>
 
 <body>
-    <form action="/download" method="POST">
-        <label for="stock">Which stocks are you looking for?:</label>
-        <input type="text" id="username" name="username" placeholder="Which stocks are you looking for?" required>
-        
-        <br>
-
-        <label for="password">What timeframe are you interested in? (T (Min), H (Hour), D (Day), W (Week), M (Month)):</label>
-        <input type="text" id="password" name="password" placeholder="What timeframe are you interested in? (T (Min), H (Hour), D (Day), W (Week), M (Month))" required>
-
-        <br>
-
-        <label for="limit">How many trades do you want? (No more that 10,000)</label>
-        <input type="text" id="limit" name="limit" placeholder="How many trades do you want?" required>
-
-        <br>
-
-        <input type="submit" value="Download">
-    </form>
+    <h4>Data Options</h4>
+    <ul>
+        <li><a href="/trades">Trades</a></li>
+        <li><a href="/bars">Bars</a></li>
+    </ul>
 </body>
 </html>
