@@ -63,11 +63,7 @@ def submit():
         print(timeframe)
         print(limit)
 
-        if int(limit) > 10000:
-            limit = 10000
-
         base_url = "https://data.alpaca.markets/v2/stocks/trades?symbols="
-        end_url = "&limit=" + limit
 
         st_list = stock.split(",")
         for st in st_list:
@@ -107,73 +103,93 @@ def submit():
             today = today - datetime.timedelta(days=2)
             yesterday = today - datetime.timedelta(days=1)
 
-        """
-        tf_value = 0
-        if timeframe == "T":
-            tf_value = input("How many minutes? (1-59)")
-        elif timeframe == "H":
-            tf_value = input("How many hours? (1-23))")
-        elif timeframe == "M":
-            tf_value = input("How many months? (1,2,3,4,6,12)") 
-
-
-        if tf_value == 0:
-            tf_value = 1
-        tf_url += str(tf_value) + timeframe 
-
-        """
+        csv_file_path = "./prices.csv"
+        file = open(csv_file_path, mode="r+", newline="")
+        file.truncate(0)
+        csv_writer = csv.writer(file)
+        #start = "2017-01-03T00%3A00%3A00Z"
         start = yesterday.strftime("%Y-%m-%dT%H%%3A%M%%3A%SZ")
         end = today.strftime("%Y-%m-%dT%H%%3A%M%%3A%SZ")
         print(start)
         print(end)
-        base_url = base_url + "&start=" + start + "&end=" + end + end_url
-        print(base_url)
+        if int(limit) <= 10000:
+            end_url = "&limit=" + limit
+        else:
+            end_url = "&limit=" + str(10000)
+        full_url = base_url + "&start=" + start + "&end=" + end + end_url
+        print(full_url)
 
-        secret_key = os.environ.get("ALPACA_DATA_SECRET_KEY")
-        print(secret_key)
-        public_key = os.environ.get("ALPACA_DATA_PUBLIC_KEY")
-        print("pk" + public_key)
-        
-        headers = {
-            #"accept": "application/json",
-            "APCA-API-KEY-ID": public_key,
-            "APCA-API-SECRET-KEY": secret_key
-        }
 
-        response = requests.get(base_url, headers=headers)
-        content = response.text
-        print(content)
-        csv_file_path = "./prices.csv"
+        j = 0
+        while j < int(limit):
 
-        file = open(csv_file_path, mode="r+", newline="")
-        csv_writer = csv.writer(file)
+            secret_key = os.environ.get("ALPACA_DATA_SECRET_KEY")
+            print(secret_key)
+            public_key = os.environ.get("ALPACA_DATA_PUBLIC_KEY")
+            print("pk" + public_key)
+            
+            headers = {
+                #"accept": "application/json",
+                "APCA-API-KEY-ID": public_key,
+                "APCA-API-SECRET-KEY": secret_key
+            }
 
-        temp_pair = []
-        i = 0
-        while i < len(content) - 2:
-            #print(content[i])
-            if content[i] == '"':
-                if content[i+1] == 't':
-                    i += 5
-                    temp_time = ""
-                    while content[i] != ',':
-                        temp_time += content[i]
-                        i += 1
-                    temp_pair.append(temp_time)
-                elif content[i+1] == 'p':
-                    i += 4
-                    temp_price = ""
-                    while content[i] != ',':
-                        temp_price += content[i]
-                        i += 1
-                    temp_pair.append(temp_price)
-                    print(temp_pair)
-                    csv_writer.writerow(temp_pair)
-                    temp_pair = []
-                
-            i += 1
+            response = requests.get(full_url, headers=headers)
+            content = response.text
+            print(content)
 
-            #file.close()
+            
+            
+            temp_pair = []
+            first_time = start
+            i = 0
+            while i < len(content) - 2:
+                #print(content[i])
+                if content[i] == '"':
+                    if content[i+1] == 't':
+                        i += 5
+                        temp_time = ""
+                        while content[i] != ',':
+                            temp_time += content[i]
+                            i += 1
+                        temp_pair.append(temp_time)
+                        first_time = temp_time
+                    elif content[i+1] == 'p':
+                        i += 4
+                        temp_price = ""
+                        while content[i] != ',':
+                            temp_price += content[i]
+                            i += 1
+                        temp_pair.append(temp_price)
+                        print(temp_pair)
+                        csv_writer.writerow(temp_pair)
+                        temp_pair = []
+                    
+                i += 1
+            print(full_url)
+            if not first_time == None:
+                print("FINAL TIME " + first_time)
+                k = 0
+                while k < (len(first_time) - 1):
+                    print(first_time[k])
+                    if first_time[k] == ':':
+                        first_time = first_time[:k] + "%3A" + first_time[k+1:]
+                        k += 3
+                    elif first_time[k] == '.':
+                        print("DECIMAL")
+                        first_time = first_time[:k] + "Z"
+                        k = len(first_time) - 1
+                    else:
+                        k += 1
+                print("first TIME " + first_time)
+                start = first_time
+                if int(limit) <= 10000:
+                    end_url = "&limit=" + limit
+                else:
+                    end_url = "&limit=" + str(10000)
+                full_url = base_url + "&start=" + start + "&end=" + end + end_url
+            print(full_url)
+            j += 10000
         file.close()
         return send_file(csv_file_path, as_attachment=True)
 
