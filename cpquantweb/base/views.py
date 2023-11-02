@@ -10,4 +10,6 @@ def page1(request):
     return render(request, 'base/page1.html')
 
 def page2(request):
-    return render(request, 'base/page2.html')
+    context = {}
+    context['hello'] = 'Hello World!'
+    return render(request, 'base/page2.html', context)
