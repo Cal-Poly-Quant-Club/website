@@ -10,4 +10,5 @@ urlpatterns = [
     path('trades/', views.trades, name='trades'),
     path('bars/', views.bars, name='bars'),
     path('downloadbars/', views.bars, name='downloadbars/'),
+    path('downloadbarssubmit/', views.submitb, name="downloadbarsdubmit/")
 ]

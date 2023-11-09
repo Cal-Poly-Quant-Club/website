@@ -4,6 +4,25 @@ import datetime
 import os
 import requests
 import csv
+import dotenv
+from django.conf import settings
+
+dotenv.load_dotenv()
+
+
+def set_environment_variables(file_path):
+    with open(file_path, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if line:
+                key, value = line.split(':', 1)
+                #print(key)
+                #print(value)
+                os.environ[key] = value
+
+# Specify the path to your environment variables file
+env_file_path = 'vars.env'
+set_environment_variables(env_file_path)
 
 # Create your views here.
 
@@ -29,11 +48,13 @@ def bars(request):
     return render(request, 'base/bars.html')
 
 def submitb(request):
+    print(request)
     if request.method == 'POST':
-        stock = request.form.get('username')
-        timeframe = request.form.get('password')
-        start_ue = request.form.get('start')
-        limit = request.form.get('limit')
+        data = request.POST
+        stock = data.get('username')
+        timeframe = data.get('password')
+        start_ue = data.get('start')
+        limit = data.get('limit')
     
         base_url = "https://data.alpaca.markets/v2/stocks/bars?symbols="
 
@@ -169,5 +190,8 @@ def submitb(request):
             print(full_url)
             j += 10000
         file.close()
-        response = FileResponse(csv_file_path)
-        return response
+        data = open('prices.csv','r').read()
+        print(data)
+        resp = HttpResponse(data)
+        resp['Content-Disposition'] = 'attachment;filename=prices.csv'
+        return resp
