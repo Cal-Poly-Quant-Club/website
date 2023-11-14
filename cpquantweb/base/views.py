@@ -114,7 +114,7 @@ def submitb(request):
             end_url = "&limit=" + limit
         else:
             end_url = "&limit=" + str(10000)
-        full_url = base_url + "&start=" + start + "&end=" + end + end_url
+        full_url = base_url + "&start=" + start + "&end=" + end + end_url + "&adjustment=raw&feed=iex&sort=asc"
         print(full_url)
 
         j = 0
@@ -143,7 +143,7 @@ def submitb(request):
             first_time = start
             i = 0
             while i < len(content) - 2:
-                print(content[i])
+                #print(content[i])
                 if content[i] == '"':
                     if content[i+1] == 't':
                         i += 5
@@ -186,7 +186,7 @@ def submitb(request):
                     end_url = "&limit=" + limit
                 else:
                     end_url = "&limit=" + str(10000)
-                full_url = base_url + "&start=" + start + "&end=" + end + end_url
+                full_url = base_url + "&start=" + start + "&end=" + end + end_url + "&adjustment=raw&feed=iex&sort=asc"
             print(full_url)
             j += 10000
         file.close()
