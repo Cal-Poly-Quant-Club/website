@@ -29,7 +29,6 @@ set_environment_variables(env_file_path)
 def base(request):
     return render(request, 'base/base.html')
 
-
 def page1(request):
     return render(request, 'base/page1.html')
 
