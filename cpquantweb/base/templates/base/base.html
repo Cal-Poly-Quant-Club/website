@@ -14,9 +14,29 @@
     background-color: green;
   }
 
-  .background-page-color{
-    background-color: gold;
+  .navbar {
+  --bs-navbar-color: green;
+  --bs-navbar-brand-color: gold; 
+  --bs-navbar-nav-link-color: rgb(223, 194, 28);
+  --bs-navbar-active-color: gold:
   }
+
+  .nav-item{
+    color: gold;
+  }
+
+  .nav-link-active{
+    color:gold;
+  }
+  
+  .nav-link{
+    color: gold;
+  }
+
+  .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: var(--bs-navbar-active-color);
+}
+
 </style>
 
 <body>
