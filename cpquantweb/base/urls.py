@@ -9,6 +9,12 @@ urlpatterns = [
     path('get_data/', views.get_data, name='get_data'),
     path('trades/', views.trades, name='trades'),
     path('bars/', views.bars, name='bars'),
-    path('downloadbars/', views.bars, name='downloadbars/'),
-    path('downloadbarssubmit/', views.submitb, name="downloadbarsdubmit/")
+    path('downloadbars/', views.bars, name='downloadbars'),
+    path('downloadbarssubmit/', views.submitb, name="downloadbarsdubmit"),
+    path('about/', views.about, name="about"),
+    path('projects/', views.projects, name="projects"),
+    path('contact/', views.contact, name="contact"),
+    path('cpquant/', views.contact, name="cpquant"),
+    path('startup-valuation/', views.startup_valuation, name="startup- valuation"),
+    path('mts/', views.mts, name="mts"),
 ]

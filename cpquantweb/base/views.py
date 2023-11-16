@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
+import pandas as pd
 import datetime
 import os
 import requests
 import csv
 import dotenv
 from django.conf import settings
+from cpquant.data import AlpacaDataClient
+
 
 dotenv.load_dotenv()
 
@@ -46,6 +49,24 @@ def trades(request):
 def bars(request):
     return render(request, 'base/bars.html')
 
+def about(request):
+    return render(request, 'base/about.html')
+
+def projects(request):
+    return render(request, 'base/projects.html')
+
+def contact(request):
+    return render(request, 'base/contact.html')
+
+def cpquant(request):
+    return render(request, 'base/cpquant.html')
+
+def startup_valuation(request):
+    return render(request, 'base/startup-valuation.html')
+
+def mts(request):
+    return render(request, 'base/mts.html')
+
 def submitb(request):
     print(request)
     if request.method == 'POST':
@@ -54,7 +75,15 @@ def submitb(request):
         timeframe = data.get('password')
         start_ue = data.get('start')
         limit = data.get('limit')
-    
+
+        client = AlpacaDataClient()
+        bars = client.get_bars([ticker for ticker in stock.split(",")])
+        for ticker in bars:
+            df = bars[ticker]
+            df.to_csv(ticker + ".csv")
+            # have the user download that csv
+            os.rm(ticker + '.csv')
+
         base_url = "https://data.alpaca.markets/v2/stocks/bars?symbols="
 
         st_list = stock.split(",")
