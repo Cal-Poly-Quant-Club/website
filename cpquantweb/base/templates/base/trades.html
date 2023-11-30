@@ -7,14 +7,15 @@
 </head>
 
 <body>
-    <form action="/downloadtrades/" method="POST">
+    <form action="/downloadtradessubmit/" method="POST">
+        {% csrf_token %}
         <label for="stock">Which stocks are you looking for?:</label>
         <input type="text" id="username" name="username" placeholder="Which stocks are you looking for?" required>
         
         <br>
 
-        <label for="password">When do you want to start?:</label>
-        <input type="text" id="password" name="password" placeholder="When do you want to start?:" required>
+        <label for="start">When would you like to start?: (mm/dd/yy)</label>
+        <input type="text" id="start" name="start" placeholder="When would you like to start?: (mm/dd/yy)" required>
 
         <br>
 

@@ -75,15 +75,20 @@ def submitb(request):
         timeframe = data.get('password')
         start_ue = data.get('start')
         limit = data.get('limit')
+        start = "20" + start_ue[-2:] + "-" + start_ue[0:2] + "-" + start_ue[3:5]
 
         client = AlpacaDataClient()
-        bars = client.get_bars([ticker for ticker in stock.split(",")])
+        bars = client.get_bars([ticker for ticker in stock.split(",")], timeframe, start, None, "raw", limit)
         for ticker in bars:
             df = bars[ticker]
             df.to_csv(ticker + ".csv")
-            # have the user download that csv
-            os.rm(ticker + '.csv')
-
+            data = open(ticker + '.csv','r').read()
+            print(data)
+            resp = HttpResponse(data)
+            os.remove(ticker + '.csv')
+            resp['Content-Disposition'] = 'attachment;filename=' + ticker + '.csv'
+            return resp
+        """
         base_url = "https://data.alpaca.markets/v2/stocks/bars?symbols="
 
         st_list = stock.split(",")
@@ -223,3 +228,24 @@ def submitb(request):
         resp = HttpResponse(data)
         resp['Content-Disposition'] = 'attachment;filename=prices.csv'
         return resp
+        """
+def submitt(request):
+    print(request.POST)
+    if request.method == 'POST':
+        data = request.POST
+        stock = data.get('username')
+        start_ue = data.get('start')
+        limit = data.get('limit')
+        start = "20" + start_ue[-2:] + "-" + start_ue[0:2] + "-" + start_ue[3:5]
+
+        client = AlpacaDataClient()
+        trades = client.get_trades([ticker for ticker in stock.split(",")], start, None, limit)
+        for ticker in trades:
+            df = trades[ticker]
+            df.to_csv(ticker + ".csv")
+            data = open(ticker + '.csv','r').read()
+            print(data)
+            resp = HttpResponse(data)
+            os.remove(ticker + '.csv')
+            resp['Content-Disposition'] = 'attachment;filename=' + ticker + '.csv'
+            return resp
