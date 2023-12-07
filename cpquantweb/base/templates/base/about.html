@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +9,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <a href="" class="title">Cal Poly Quantitative Finance Club</a>
-            <ul class="navbar-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/get_data">Get Data</a></li>
-            </ul>
-        </nav>
+        {% block navbar %}
+        {% endblock %}
     </header>
-
+    {% block content %}
     <main>
         <section>
             <h2>About Us</h2>
@@ -47,6 +40,8 @@
             </div>
         </section>
     </main>
+    {% endblock%}
+
 
     <footer>
         <p>&copy; 2023 Your Website</p>

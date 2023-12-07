@@ -9,71 +9,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/superhero/bootstrap.min.css" integrity="sha384-HnTY+mLT0stQlOwD3wcAzSVAZbrBp141qwfR4WfTqVQKSgmcgzk+oP0ieIyrxiFO" crossorigin="anonymous">
 </head>
 
-<style>
-  .custom-navbar-color {
-    background-color: green;
-  }
+{% extends 'base.html' %}
 
-  .navbar {
-  --bs-navbar-color: green;
-  --bs-navbar-brand-color: gold; 
-  --bs-navbar-nav-link-color: rgb(223, 194, 28);
-  --bs-navbar-nav-link-active-color: gold;
-  --bs-navbar-active-color: gold;
-  --bs-navbar-hover-color: rgb(202, 172, 0);
-  --bs-navbar-brand-hover-color: rgb(202, 172, 0);
-  }
+{% block title %}Home - Cal Poly Quantitative Finance{% endblock %}
 
-  .nav-item, .nav-link-active{
-    color: gold;
-  }
+{% block navbar %}
+{% endblock %}
 
-  .nav-link-active{
-    color:gold;
-  }
-  
-  .nav-link{
-    color: gold;
-  }
 
-  .navbar-toggler {
-    --bs-navbar-toggle: gold;
-    color: var(--bs-navbar-toggle);
-  }
-
-</style>
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg custom-navbar-color" data-bs-theme="dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Cal Poly Quantitative Finanace Club</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="/">Home
-                      <span class="visually-hidden">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/projects">Projects</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                <li class="nav-item">
-                    <a class="nav-link" href="/get_data">Get Data</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </header>
+{% block content %}
     <main>
         <section>
             <h2>Projects</h2>
@@ -84,8 +28,10 @@
             </ul>
         </section>
     </main>
+{% endblock %}
+
+{% block pagebody %}
     <footer>
         <p>&copy; 2023 Cal Poly Quantitative Finance</p>
     </footer>
-</body>
-</html>
+{% endblock %}

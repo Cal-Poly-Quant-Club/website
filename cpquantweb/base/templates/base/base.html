@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/superhero/bootstrap.min.css" integrity="sha384-HnTY+mLT0stQlOwD3wcAzSVAZbrBp141qwfR4WfTqVQKSgmcgzk+oP0ieIyrxiFO" crossorigin="anonymous">
 </head>
 
-<style>
+  <style>
   .custom-navbar-color {
     background-color: green;
   }
@@ -31,7 +31,7 @@
   .nav-link-active{
     color:gold;
   }
-  
+
   .nav-link{
     color: gold;
   }
@@ -41,10 +41,11 @@
     color: var(--bs-navbar-toggle);
   }
 
-</style>
+  </style>
 
 <body>
     <header>
+      {% block navbar %}
         <nav class="navbar navbar-expand-lg custom-navbar-color" data-bs-theme="dark">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Cal Poly Quantitative Finanace Club</a>
@@ -73,8 +74,7 @@
               </div>
             </div>
           </nav>
+      {% endblock %}
     </header>
-  {%block pagebody %}
-  {%endblock %}
 </body>
 </html>
