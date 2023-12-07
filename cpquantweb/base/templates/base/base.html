@@ -18,10 +18,13 @@
   --bs-navbar-color: green;
   --bs-navbar-brand-color: gold; 
   --bs-navbar-nav-link-color: rgb(223, 194, 28);
-  --bs-navbar-active-color: gold:
+  --bs-navbar-nav-link-active-color: gold;
+  --bs-navbar-active-color: gold;
+  --bs-navbar-hover-color: rgb(202, 172, 0);
+  --bs-navbar-brand-hover-color: rgb(202, 172, 0);
   }
 
-  .nav-item{
+  .nav-item, .nav-link-active{
     color: gold;
   }
 
@@ -33,9 +36,10 @@
     color: gold;
   }
 
-  .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
-    color: var(--bs-navbar-active-color);
-}
+  .navbar-toggler {
+    --bs-navbar-toggle: gold;
+    color: var(--bs-navbar-toggle);
+  }
 
 </style>
 
@@ -70,18 +74,7 @@
             </div>
           </nav>
     </header>
-    <main>
-        <section>
-            <h2>Projects</h2>
-            <ul>
-                <li><a href="/cpquant">cpquant Library</a></li>
-                <li><a href="/mts">Modular Trading System</a></li>
-                <li><a href="/startup-valuation">Startup Valuation</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Cal Poly Quantitative Finance</p>
-    </footer>
+  {%block pagebody %}
+  {%endblock %}
 </body>
 </html>
