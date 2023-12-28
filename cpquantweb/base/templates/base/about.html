@@ -1,50 +1,31 @@
-{% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT US!</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <header>
-        {% block navbar %}
-        {% endblock %}
-    </header>
-    {% block content %}
-    <main>
-        <section>
-            <h2>About Us</h2>
-            <p>Started in 2023, Cal Poly Quantitative Finance Club focuses on preparing students for the working world through 
-                hands-on projects and career readiness programs, such as resume workshops and interview practice.</p>
-        </section>
-`          
-        <h2>Officers</h2>
-        <section id="officers">
-            <div class="flex-container">
-                <h4>Charlie Ray, President - C/O 2026</h4>
-                <p>Colorado</p>
-            </div>
-            <div class="flex-container">
-                <h4>Billy Block, Vice President/Stats Lead - C/O 2026</h4>
-                <p>This mf stupid bro.</p>
-            </div>
-            <div class="flex-container">
-                <h4>Manny Gonzalez, Treasurer/Business Lead - C/O 2026</h4>
-                <p>Bakersfield</p>
-            </div>
-            <div class="flex-container">
-                <h4>Seth Johnson, CS Lead - C/O 2026</h4>
-                <p>This mf smart bro.</p>
-            </div>
-        </section>
-    </main>
-    {% endblock%}
+{% extends 'base/base.html' %}
 
+{% block title %} About Us {% endblock %}
 
-    <footer>
-        <p>&copy; 2023 Your Website</p>
-    </footer>
-</body>
-</html>
+{%block content%}
+    <section>
+        <h2>About Us</h2>
+        <p>Started in 2023, Cal Poly Quantitative Finance Club focuses on preparing students for the working world through 
+            hands-on projects and career readiness programs, such as resume workshops and interview practice.</p>
+    </section>
+        
+    <h2>Officers</h2>
+    <section id="officers">
+        <div class="flex-container">
+            <h4>Charlie Ray, President - C/O 2026</h4>
+            <p>Colorado</p>
+        </div>
+        <div class="flex-container">
+            <h4>Billy Block, Vice President/Stats Lead - C/O 2026</h4>
+            <p>This mf stupid bro.</p>
+        </div>
+        <div class="flex-container">
+            <h4>Manny Gonzalez, Treasurer/Business Lead - C/O 2026</h4>
+            <p>Bakersfield</p>
+        </div>
+        <div class="flex-container">
+            <h4>Seth Johnson, CS Lead - C/O 2026</h4>
+            <p>This mf smart bro.</p>
+        </div>
+    </section>
+{%endblock%}

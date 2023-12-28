@@ -49,6 +49,9 @@ def trades(request):
 def bars(request):
     return render(request, 'base/bars.html')
 
+def home(request):
+    return render(request, 'base/home.html')
+
 def about(request):
     return render(request, 'base/about.html')
 

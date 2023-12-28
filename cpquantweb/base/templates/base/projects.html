@@ -1,43 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUANT FINANCE PROJECTS</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="" class="title">Cal Poly Quantitative Finance Club</a>
-            <ul class="navbar-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/get_data">Get Data</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'base/base.html' %}
 
-    <main>
-        <section>
-            <h2>Projects</h2>
-            <p>This is the about us section of your website.</p>
-        </section>
+{% block title %}Home - Cal Poly Quantitative Finance{% endblock %}
 
-        <section>
-            <h2>Services</h2>
-            <ul>
-                <li>Service 1</li>
-                <li>Service 2</li>
-                <li>Service 3</li>
-            </ul>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2023 Your Website</p>
-    </footer>
-</body>
-</html>
+{% block content %}
+      <section>
+          <h2>Projects</h2>
+          <p>This is the about us section of your website.</p>
+      </section>
+
+      <section>
+          <h2>Services</h2>
+          <ul>
+              <li>Service 1</li>
+              <li>Service 2</li>
+              <li>Service 3</li>
+          </ul>
+      </section>
+{% endblock %}

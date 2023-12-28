@@ -13,6 +13,7 @@ urlpatterns = [
     path('downloadbarssubmit/', views.submitb, name="downloadbarssubmit"),
     path('downloadtrades/', views.trades, name='downloadtrades'),
     path('downloadtradessubmit/', views.submitt, name="downloadtradessubmit"),
+    path('home/', views.home, name="home"),
     path('about/', views.about, name="about"),
     path('projects/', views.projects, name="projects"),
     path('contact/', views.contact, name="contact"),
